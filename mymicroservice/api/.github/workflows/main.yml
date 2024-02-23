@@ -1,0 +1,62 @@
+##SONAR TOKEN - 13aa04315dc734d5bef17d1450e0dea534adb6f8###
+
+name: CI/CD with SonarQube
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+  test:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Run tests
+        run: |
+          # Replace this with your test command - python3 manage.py test --keepdb
+          python manage.py test
+
+  lint:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Lint code
+        run: |
+          # Replace this with your linting command
+          pylint mymicroservice
+
+  sonarqube:
+    runs-on: ubuntu-latest
+
+    needs: [build, test, lint]
+
+    steps:
+      - name: Analyze with SonarQube
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: MYMICROSERVICE
+          SONAR_ORGANIZATION: rluhach
