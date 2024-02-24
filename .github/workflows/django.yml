@@ -33,6 +33,8 @@ jobs:
       - name: Run tests
         run: |
           # Replace this with your test command - python3 manage.py test --keepdb
+          ls
+          pwd
           cd MYMICROSERVICE
           python manage.py test
 
