@@ -35,7 +35,7 @@ jobs:
           # Replace this with your test command - python3 manage.py test --keepdb
           ls
           pwd
-          cd MYMICROSERVICE
+          cd mymicroservice
           python manage.py test
 
   lint:
