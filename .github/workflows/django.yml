@@ -47,9 +47,9 @@ jobs:
       - name: Run tests
         run: |
           # Replace this with your test command - python3 manage.py test --keepdb
-          ls
-          pwd
-          cd mymicroservice
+          # ls
+          # pwd
+          # cd mymicroservice
           python manage.py test
           
 
