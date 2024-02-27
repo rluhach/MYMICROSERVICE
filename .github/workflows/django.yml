@@ -99,6 +99,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run SonarQube analysis
+        run: sonar-scanner -X
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+
+
       - name: Analyze with SonarQube
         uses: sonarsource/sonarcloud-github-action@master
         env:
