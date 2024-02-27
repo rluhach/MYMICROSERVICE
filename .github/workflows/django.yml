@@ -76,6 +76,7 @@ jobs:
       - name: Lint code
         run: |
           # Replace this with your linting command
+          cd mymicroservice
           pylint mymicroservice
 
   sonarqube:
