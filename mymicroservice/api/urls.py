@@ -1,4 +1,6 @@
 # api/urls.py
+"""URL patterns for mymicroservice."""
+
 from django.urls import path
 from .views import ItemListCreateView, ItemDetailView
 
