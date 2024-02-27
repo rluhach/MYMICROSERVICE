@@ -99,6 +99,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+    
+      - name: Install SonarScanner
+        run: |
+            export SONAR_SCANNER_VERSION=4.6.0.2311  # Replace with the latest version
+            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip
+            unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip
+            export PATH=$PATH:$PWD/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin
+
       - name: Run SonarCloud analysis
         run: sonar-scanner
         env:
