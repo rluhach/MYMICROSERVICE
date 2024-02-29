@@ -35,7 +35,7 @@ jobs:
 
           pwd
 
-          cd /mymicroservice/api/tests.py
+          cd /mymicroservice/api
 
           python manage.py test
   lint:
