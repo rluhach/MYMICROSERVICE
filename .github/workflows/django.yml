@@ -27,17 +27,11 @@ jobs:
     needs: build
     steps:
       - name: Run tests
-        run: >
-          # Just Replace this command with your test command - python3 manage.py
-          test --keepdb
-
-          ls
-
-          pwd
-
-          cd /mymicroservice/api
-
-          python manage.py test
+        run: |
+          ls -la                       
+          pwd                           
+          cd mymicroservice              
+          python manage.py test           
   lint:
     runs-on: ubuntu-latest
     needs: test
