@@ -99,24 +99,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # - name: Set up Java
-      #   uses: actions/setup-java@v2
-      #   with:
-      #     distribution: 'adopt'
-      #     java-version: '8'  
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'  
     
-      # - name: Install SonarScanner
-      #   run: |
-      #       export SONAR_SCANNER_VERSION=4.6.0.2311  # Replace with the latest version
-      #       wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip
-      #       unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip
-      #       echo "export PATH=$PATH:$PWD/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin" >> $HOME/.bashrc
-      #       source $HOME/.bashrc
+      - name: Install SonarScanner
+        run: |
+            export SONAR_SCANNER_VERSION=4.6.0.2311  # Replace with the latest version
+            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip
+            unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip
+            echo "export PATH=$PATH:$PWD/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin" >> $HOME/.bashrc
+            source $HOME/.bashrc
 
-      # - name: Debug Info
-      #   run: |
-      #         ls -la $PWD
-      #         echo "PATH: $PATH"
+      - name: Debug Info
+        run: |
+              ls -la $PWD
+              echo "PATH: $PATH"
       
       - name: Analyze with SonarCloud
         uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
