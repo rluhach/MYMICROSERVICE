@@ -16,3 +16,6 @@ class ItemViewTest(TestCase):
         response = self.client.get(reverse_lazy('item-list-create'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateNotUsed(response)
+
+    def test_failure(self):
+        self.fail("Intentional test failure")
