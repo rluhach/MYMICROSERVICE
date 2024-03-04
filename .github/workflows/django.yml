@@ -129,3 +129,4 @@ jobs:
                   # mandatory
                   -Dsonar.projectKey=MYMICROSERVICE
                   -Dsonar.organization=rluhach
+                  -X 
